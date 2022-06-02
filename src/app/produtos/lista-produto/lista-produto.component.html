@@ -1,0 +1,62 @@
+<!-- <div class="row">
+    <div *ngIf="array.length > 0" class=" mt-5 col-md-5 mx-auto">
+            <table *ngFor="let produto of array; let i= index" class="list-group-item  flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1"> {{produto.nome}} </h5>
+                        <small>quantidade minima no estoque: {{produto.qtdMinimaEstoque}}</small>
+                    </div>
+                        <p class="test" [ngClass]="{'test':produto.qtdEstoque <= produto.qtdMinimaEstoque}" >quantidade no estoque: {{produto.qtdEstoque}}<p>
+                        <p class="mb-1">R$: {{produto.preco}}</p>
+                    <button routerLink="formulario/{{produto.id}}" type="button" class=" m-1 btn btn-warning">Editar</button>
+                    <button type="button" (click)="removeItem(produto)" class=" m-1 btn btn-danger">Excluir</button>
+                    <button [disabled]="produto.qtdEstoque <= produto.qtdMinimaEstoque" type="button" (click)=" venderItem(produto)" class=" m-1 btn btn-success">Vender</button>             
+            </table>
+    </div>  
+</div> -->
+<div>
+    <ngx-datatable class="material fullscreen" [rows]="array"
+    [rowHeight]="100"
+    [columnMode]="ColumnMode.flex"
+    [scrollbarV]="true"
+    >
+    <ngx-datatable-column name="nome" [flexGrow]="1">
+        {{ array }}
+    </ngx-datatable-column>
+    <ngx-datatable-column name="preco" [flexGrow]="1">
+        {{array}}
+    </ngx-datatable-column>
+    <ngx-datatable-column name="qtdEstoque" [flexGrow]="1">
+        {{array}}
+    </ngx-datatable-column>
+    <ngx-datatable-column name="qtdMinimaEstoque" [flexGrow]="1">
+        {{array}}
+    </ngx-datatable-column>
+    <ngx-datatable-column name="ação" [flexGrow]="5" [cellTemplate]="editTmpl">
+        <ng-template #editTmpl let-row="row" let-value="value">
+            <button routerLink="formulario/{{row.id}}" type="button" class=" m-1 btn btn-warning">Editar</button>
+            <button type="button" (click)="removeItem(row)" class=" m-1 btn btn-danger">Excluir</button>
+            <button [disabled]="row.qtdEstoque <= row.qtdMinimaEstoque" type="button" (click)=" venderItem(row)" class=" m-1 btn btn-success">Vender</button> 
+        </ng-template>
+    </ngx-datatable-column> 
+    </ngx-datatable>  
+</div>
+
+
+
+
+<!-- <div>
+    <ngx-datatable class="material fullscreen" [rows]="array" [columns]="columns"
+    [rowHeight]="100"
+    [columnMode]="'force'"
+    [scrollbarV]="true"
+    >
+        <ng-template #editTmpl let-row="row" let-value="value">
+            <button routerLink="formulario/{{row.id}}" type="button" class=" m-1 btn btn-warning">Editar</button>
+            <button type="button" (click)="removeItem(row)" class=" m-1 btn btn-danger">Excluir</button>
+            <button [disabled]="row.qtdEstoque <= row.qtdMinimaEstoque" type="button" (click)=" venderItem(row)" class=" m-1 btn btn-success">Vender</button> 
+          </ng-template>
+    </ngx-datatable>  
+</div> -->
+
+
+

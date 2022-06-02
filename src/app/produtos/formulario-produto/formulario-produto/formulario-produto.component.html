@@ -1,0 +1,37 @@
+<div class="row" >
+    <div class=" mx-auto col-xs-12 col-md-6 ">
+        <form [formGroup]="cadastroProduto" (ngSubmit)="salvarDadosFormCadastro()">
+            <div>
+                <div class="mb-3 mt-3">
+                    <label for="nome" class="form-label">Nome:</label>
+                    <input formControlName="nome" type="text" class="form-control" id="nome" placeholder="Digite o nome do produto:" name="name">
+                    <span *ngIf="!cadastroProduto.get('nome')?.valid && cadastroProduto.get('nome')?.touched">
+                        <p> nome invalido </p>
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="preco" class="form-label">Preço:</label>
+                    <input formControlName="preco" type="number" class="form-control" id="preco" placeholder="Digite o preço do produto:" name="preço">
+                    <span *ngIf="!cadastroProduto.get('preco')?.valid && cadastroProduto.get('preco')?.touched">
+                        <p> preço invalido </p>
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="qtdEstoque" class="form-label">Quantidade estoque:</label>
+                    <input formControlName="qtdEstoque" type="number" class="form-control" id="qtdEstoque" placeholder="Digite a quantidade de estoque:" name="estoque">
+                    <span *ngIf="!cadastroProduto.get('qtdEstoque')?.valid && cadastroProduto.get('qtdEstoque')?.touched">
+                        <p> quantidade de estoque invalida </p>
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="qtdMinimaEstoque" class="form-label">Quantidade minima em estoque:</label>
+                    <input formControlName="qtdMinimaEstoque" type="number" class="form-control" id="qtdMinimaEstoque" placeholder="Digite a quantidade minima para o estoque:" name="quantidade">
+                    <span *ngIf="!cadastroProduto.get('qtdMinimaEstoque')?.valid && cadastroProduto.get('qtdMinimaEstoque')?.touched">
+                        <p> quantidade de estoque minimo invalido </p>
+                    </span>
+                </div>
+                <button [disabled]="cadastroProduto.invalid" type="submit" class="btn btn-primary">Cadastrar produto</button>
+                </div>
+        </form>
+  </div>
+</div>
