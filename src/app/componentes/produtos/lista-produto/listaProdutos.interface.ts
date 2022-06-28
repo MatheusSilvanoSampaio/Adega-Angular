@@ -1,4 +1,5 @@
 import { TemplateRef } from "@angular/core";
+import { Data } from "@angular/router";
 
 export  interface ListaProdutosInterface {
     nome: string;

@@ -3,6 +3,8 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from "rxjs";
 import { LocalStorageService } from "../localStorage/localStorage.service";
 
+//guard para bloquear as rotas se o usuario estiver logado
+
 @Injectable({ providedIn: 'root' })
 export class Logout implements CanActivate {
     constructor(private localStorageService: LocalStorageService, private router: Router){}

@@ -1,0 +1,50 @@
+<div class="row" >
+  <div class=" mx-auto col-md-3 mt-5">
+    <form [formGroup]="cadastroFormularioUsuario" (ngSubmit)="salvarDadosFormCadastro()">
+      <div>
+        <div class="mb-3 mt-3">
+          <label for="user" class="form-label">Usuario:</label>
+          <input formControlName="novoUsuario" type="user" class="form-control" id="user" placeholder="Digite um novo usuário" name="usuario">
+          <ngb-toast *ngIf="!cadastroFormularioUsuario.get('novoUsuario')?.valid && cadastroFormularioUsuario.get('novoUsuario')?.touched" [autohide]="false" (hidden)="cadastroFormularioUsuario.get('novoUsuario')?.valid">
+            <i>Insira um usuario valido!</i>
+          </ngb-toast>
+          <ngb-toast *ngIf="userEmailIncorreto == false" [autohide]="false" (hidden)="cadastroFormularioUsuario.get('novoEmail')?.valid">
+            <i>Email ou usuario ja existe</i>
+          </ngb-toast>
+        </div>
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">E-mail:</label>
+          <input formControlName="novoEmail" type="email" class="form-control" id="email" placeholder="Digite um novo usuario" name="email">
+          <ngb-toast *ngIf="!cadastroFormularioUsuario.get('novoEmail')?.valid && cadastroFormularioUsuario.get('novoEmail')?.touched" [autohide]="false" (hidden)="cadastroFormularioUsuario.get('novoEmail')?.valid">
+            <i>Insira um e-mail valido!</i>
+          </ngb-toast>
+          <ngb-toast *ngIf="userEmailIncorreto == false" [autohide]="false" (hidden)="cadastroFormularioUsuario.get('novoEmail')?.valid">
+            <i>Email ou usuario ja existe</i>
+          </ngb-toast>
+        </div>
+        <div class="mb-3">
+          <label for="pwd" class="form-label">senha:</label>
+          <input formControlName="novaSenha" type="password" class="form-control" id="pwd" placeholder="Digite uma nova senha" name="senha">
+          <ngb-toast *ngIf="!cadastroFormularioUsuario.get('novaSenha')?.valid && cadastroFormularioUsuario.get('novaSenha')?.touched" [autohide]="false" (hidden)="cadastroFormularioUsuario.get('novaSenha')?.valid">
+            <i>Insira no minimo:<br>
+              uma letra minuscula<br>
+              uma letra maiscula<br>
+              um numero<br>
+              e um caracter especial<br>
+            </i>
+          </ngb-toast>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPwd" class="form-label">Confirme a senha:</label>
+          <input formControlName="confirmarSenha" type="password" class="form-control" id="confirmPwd" placeholder="Digite a senha novamente" name="confirmarSenha">
+          <ngb-toast *ngIf="!cadastroFormularioUsuario.get('confirmarSenha')?.valid && cadastroFormularioUsuario.get('confirmarSenha')?.touched" [autohide]="false" (hidden)="cadastroFormularioUsuario.get('confirmarSenha')?.valid">
+            <i>Insira uma senha valida!</i>
+          </ngb-toast>
+        </div>
+        <button
+          [disabled]="cadastroFormularioUsuario.invalid"
+          type="submit" class="btn btn-primary">Cadastre-se</button>
+      </div>
+    </form>
+  </div>
+</div>

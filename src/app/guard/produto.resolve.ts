@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
-import { ProdutoService } from "../produtos/produto.service";
+import { ProdutoService } from "../services/produto.service";
 
+//resolve para carregar os dados de produtos atravez do id da rota e retornar eles
 
 @Injectable()
 // resolve buscara alguns dados (antes de renderizar o componente) que o componente ira precisar posteriormente
@@ -16,7 +17,7 @@ export class ProdutoResolver implements Resolve<any>{
         if(test){
             return test;
         }
-        this.router.navigate(['/produtos']); 
+        this.router.navigate(['/produtos']);
         return false;
     }
 }

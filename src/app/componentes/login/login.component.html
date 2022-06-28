@@ -1,0 +1,30 @@
+<div class="row" >
+    <div class=" mx-auto col-md-3 mt-5">
+        <form [formGroup]="loginFormulario" (ngSubmit)="salvarDadosFormLogin()">
+            <div>
+                <div class="mb-3 mt-3">
+                    <label for="user" class="form-label">User:</label>
+                    <input formControlName="user" type="user" class="form-control" id="user" placeholder="Digite o usuário" name="usuario">
+                  <ngb-toast *ngIf="!loginFormulario.get('user')?.valid && loginFormulario.get('user')?.touched && log || log == false && loginFormulario.get('user')?.touched" [autohide]="false" (hidden)="loginFormulario.get('user')?.valid">
+                    <i>Insira um usuario valido!</i>
+                  </ngb-toast>
+                </div>
+                <div class="mb-3">
+                    <label for="pwd" class="form-label">senha:</label>
+                    <input formControlName="senha" type="password" class="form-control" id="pwd" placeholder="Digite a senha" name="senha">
+                  <ngb-toast *ngIf="!loginFormulario.get('senha')?.valid && loginFormulario.get('senha')?.touched && log || log == false && loginFormulario.get('senha')?.touched" [autohide]="false" (hidden)="loginFormulario.get('senha')?.valid">
+                    <i>Senha Invalida</i>
+                  </ngb-toast>
+                </div>
+              <div>
+                <p>
+                  <a routerLink="/cadastro"> Cadastre-se </a>
+                </p>
+              </div>
+                <button
+                [disabled]="loginFormulario.invalid"
+                type="submit" class="btn btn-primary">Login</button>
+                </div>
+        </form>
+  </div>
+</div>

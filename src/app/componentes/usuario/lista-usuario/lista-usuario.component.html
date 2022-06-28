@@ -1,0 +1,28 @@
+<ngx-datatable class="material fullscreen" [rows]="this.page.row"
+               [rowHeight]="80"
+               [columnMode]="ColumnMode.flex"
+               [headerHeight]="50"
+               [footerHeight]="50"
+               rowHeight="auto"
+               [externalPaging]="true"
+               [count]="page.totalElements"
+               [offset]="page.pageNumber"
+               [limit]="page.size"
+               (page)="setPage($event)"
+>
+  <ngx-datatable-column prop="novoUsuario" name="User" [flexGrow]="1">
+
+  </ngx-datatable-column>
+  <ngx-datatable-column prop="novoEmail" name="Email" [flexGrow]="2">
+
+  </ngx-datatable-column>
+  <ngx-datatable-column prop="novaSenha" name="Senha" [flexGrow]="2">
+
+  </ngx-datatable-column>
+  <ngx-datatable-column prop="ação" [flexGrow]="5" [cellTemplate]="editTmpl">
+    <ng-template #editTmpl let-row="row" let-value="value">
+      <button routerLink="cadastro/{{row.id}}" type="button" class=" m-1 btn btn-warning">Editar</button>
+      <button type="button" (click)="removeUsuario(row)" class=" m-1 btn btn-danger">Excluir usuario</button>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

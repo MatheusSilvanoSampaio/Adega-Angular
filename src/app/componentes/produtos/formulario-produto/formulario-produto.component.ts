@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Data, Router } from '@angular/router';
-import { ProdutoService } from '../../produto.service';
+import { ProdutoService } from '../../../services/produto.service';
 
 @Component({
   selector: 'app-formulario-produto',
   templateUrl: './formulario-produto.component.html',
-  styleUrls: ['./formulario-produto.component.css']
+  styleUrls: ['./formulario-produto.component.css'],
 })
 export class FormularioProdutoComponent implements OnInit {
-
   id = 0;
+  //variavel que recebe os dados do objeto atravez do id pela rota
   server?: any;
   cadastroProduto!: FormGroup;
 
@@ -31,7 +31,7 @@ export class FormularioProdutoComponent implements OnInit {
       'nome' : new FormControl(null, Validators.required),
       'preco' : new FormControl(null, Validators.required),
       'qtdEstoque' : new FormControl(null, Validators.required),
-      'qtdMinimaEstoque' :  new FormControl(null, Validators.required)
+      'qtdMinimaEstoque' :  new FormControl(null, Validators.required),
     })
   }
   salvarDadosFormCadastro() {
@@ -41,10 +41,8 @@ export class FormularioProdutoComponent implements OnInit {
       test.id = Math.random().toString(16).slice(2)
       this.produtoService.cadastroProduto(test);
     } else {
-      this.produtoService.atualizarProduto(this.cadastroProduto.getRawValue()); 
-    
+      this.produtoService.atualizarProduto(this.cadastroProduto.getRawValue());
     }
-
-    this.router.navigate(['../']); 
+    this.router.navigate(['../']);
   }
 }

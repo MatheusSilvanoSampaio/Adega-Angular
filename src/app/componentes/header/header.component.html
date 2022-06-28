@@ -3,7 +3,7 @@
       <ul class="navbar-nav">
         <li>
           <a routerLink="/produtos">
-            <img class="rounded-circle logo-img" src="assets/image/logo.jpg">
+            <img class="rounded-circle logo-img" src="../../../assets/image/logo.jpg">
           </a>
         </li>
        <!--<li routerLinkActive="active"  class="nav-item">
@@ -18,11 +18,14 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
+          <a *ngIf="loginStorage" routerLink="/usuario" class="nav-link">Lista de usuarios</a>
+        </li>
+        <li class="nav-item">
           <a *ngIf="loginStorage" routerLink="/produtos" (click)="sair()" class="nav-link">Sair</a>
         </li>
         <li>
           <a *ngIf="!loginStorage" routerLink="/login">
-            <img class="me-5 rounded-circle user-img" src="assets/image/user.png">
+            <img class="me-5 rounded-circle user-img" src="../../../assets/image/user.png">
           </a>
         </li>
       </ul>

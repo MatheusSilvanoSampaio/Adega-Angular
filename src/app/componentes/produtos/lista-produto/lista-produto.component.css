@@ -1,0 +1,4 @@
+::ng-deep .row-color {
+    /*border:1px solid red*/
+    background-color: red;
+  }

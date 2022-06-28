@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { LocalStorageService } from '../localStorage/localStorage.service';
-import { LoginService } from '../login/login.service';
+import { LocalStorageService } from '../../localStorage/localStorage.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,8 @@ import { LoginService } from '../login/login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
+
+  //variavel que verifica se o usuario está ou nao logado no localStorage
   loginStorage?: boolean;
 
   constructor(private loginService: LoginService) { }
